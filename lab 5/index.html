@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Расходы — лабораторная №5</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><span class="badge">ЛАБОРАТОРНАЯ №5 · ВАРИАНТ 20</span><span>Алматы · KZT</span></header>
+    <section class="intro"><p class="eyebrow">ЛИЧНЫЙ БЮДЖЕТ</p><h1>Расходы под контролем.</h1><p>Записывайте повседневные покупки и следите за общей суммой.</p></section>
+    <section class="summary" aria-label="Статистика"><div><p>Всего потрачено</p><strong id="total" aria-live="polite">0 ₸</strong></div><div><p>Записей</p><strong id="count">0</strong></div></section>
+    <div class="layout">
+      <section class="panel"><h2>Новый расход</h2><p class="muted">Все суммы указываются в тенге.</p>
+        <form id="expense-form" novalidate>
+          <label for="name">Название</label><input id="name" maxlength="80" placeholder="Например, продукты" required autocomplete="off" aria-describedby="error">
+          <label for="amount">Сумма, ₸</label><input id="amount" type="text" inputmode="decimal" placeholder="0" required autocomplete="off" aria-describedby="error">
+          <p id="error" class="error" role="alert"></p><button class="primary" type="submit">+ Добавить расход</button>
+        </form><p id="storage-note" class="note">Записи сохраняются в этом браузере автоматически.</p>
+      </section>
+      <section class="panel"><div class="list-heading"><h2>История расходов</h2><span class="pill">В тенге</span></div><div id="empty" class="empty"><span>₸</span><h3>Начните с первой записи</h3><p>Добавьте расход — он появится здесь.</p></div><ol id="expense-list"></ol><p id="status" class="sr-only" role="status"></p></section>
+    </div><footer>JavaScript · DOM · События · localStorage</footer>
+  </main>
+</body>
+</html>

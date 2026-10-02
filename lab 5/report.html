@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Отчёт — лабораторная №5</title><style>body{font:16px/1.65 Segoe UI,Arial;color:#24382e;max-width:960px;margin:40px auto;padding:0 24px}h1{line-height:1.25}h2{margin-top:36px}img{width:100%;border:1px solid #ddd;border-radius:8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f5f0;padding:20px;font-size:12px;line-height:1.5}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccd4c8;padding:9px;text-align:left}@media print{body{margin:0;font-size:11pt}pre{font-size:8pt}h2,h3{break-after:avoid}img,tr{break-inside:avoid}}</style><body>
+<h1>Лабораторная работа №5<br>Основы JavaScript в браузере</h1>
+<p>Дисциплина: «Языки и технология программирования».<br>Вариант №20, повышенный уровень. Мини-приложение «Расходы».<br>Регион: Алматы, Казахстан. Валюта: казахстанский тенге (KZT, ₸).</p>
+<h2>1. Тема и цель</h2><p>Переменные, условия, циклы, функции, события и работа с DOM. Цель — научиться получать данные из HTML-элементов, проверять ввод и динамически изменять страницу средствами JavaScript.</p>
+<h2>2. Условие варианта</h2><p>Добавление названия и суммы расхода, динамический список, общая сумма и удаление записей.</p>
+<h2>3. Запуск</h2><p>Распаковать архив целиком и открыть index.html в современном браузере. Установка и интернет не требуются. Ввести название и положительную сумму в тенге, затем нажать «Добавить расход». Для удаления нажать «Удалить» рядом с записью.</p>
+<h2>4. Алгоритм</h2><ol><li>Получить элементы страницы через querySelector. Загрузить сохранённый массив расходов.</li><li>При событии submit отменить перезагрузку через preventDefault и прочитать value полей.</li><li>Проверить название и сумму: от 0,01 до 100 000 000 ₸, не более двух десятичных знаков. Разрешены точка и запятая. Ошибку вывести рядом с формой.</li><li>Добавить объект с названием и суммой в массив. Суммы хранить целыми числами в тиынах, чтобы избежать ошибок округления.</li><li>Функцией renderExpenses пройти массив циклом for, создать li, span и button через createElement, вычислить итог и обновить DOM.</li><li>При click удалить выбранную запись методом splice, сохранить массив и обновить страницу. При input убрать старое сообщение об ошибке.</li></ol>
+<p>Используются const и let, if/else, цикл for, пользовательские функции, события submit, click и input, textContent, classList.add, replaceChildren и append. Название выводится через textContent, поэтому введённая HTML-разметка не выполняется.</p>
+<h2>5. Дополнительная функция</h2><p>Автоматическое сохранение массива в localStorage и восстановление при открытии страницы. Это решает проблему потери списка после перезагрузки или закрытия вкладки. Данные хранятся только в данном браузере и не передаются на сервер. Если сохранение заблокировано, приложение продолжает работать и показывает предупреждение. Для файлов, открываемых напрямую, доступность localStorage зависит от настроек браузера; проверка выполнена в Microsoft Edge.</p>
+<h2>6. Скриншоты</h2><h3>Начальное состояние</h3><img src="screenshot-empty.png" alt="Пустой список расходов"><h3>Добавленные расходы и итог</h3><img src="screenshot-expenses.png" alt="Три расхода, общая сумма 5570,50 тенге"><h3>Проверка некорректного ввода</h3><img src="screenshot-validation.png" alt="Ошибка пустого названия">
+<h2>7. Тестовые сценарии</h2><p>Проверки выполнены автоматически в Microsoft Edge. После добавления расходов 4500, 120 и 950,50 ₸ итог равен 5570,50 ₸. После удаления проезда на 120 ₸ — 5450,50 ₸.</p><table><tr><th>Сценарий и ожидаемый результат</th><th>Фактический результат</th></tr><tr><td>РџСѓСЃС‚РѕР№ СЃРїРёСЃРѕРє: 0 Р·Р°РїРёСЃРµР№</td><td>Пройден</td></tr><tr><td>Р”РѕР±Р°РІР»РµРЅРёРµ: 3 Р·Р°РїРёСЃРё, РёС‚РѕРі 5570,50</td><td>Пройден</td></tr><tr><td>РЎРѕС…СЂР°РЅРµРЅРёРµ РїРѕСЃР»Рµ РїРµСЂРµР·Р°РіСЂСѓР·РєРё</td><td>Пройден</td></tr><tr><td>РЈРґР°Р»РµРЅРёРµ: 2 Р·Р°РїРёСЃРё, РёС‚РѕРі 5450,50</td><td>Пройден</td></tr><tr><td>РћС‚РєР»РѕРЅРµРЅРёРµ СЃСѓРјРјС‹ 0</td><td>Пройден</td></tr><tr><td>РћС‚РєР»РѕРЅРµРЅРёРµ СЃСѓРјРјС‹ -10</td><td>Пройден</td></tr><tr><td>РћС‚РєР»РѕРЅРµРЅРёРµ СЃСѓРјРјС‹ abc</td><td>Пройден</td></tr><tr><td>РћС‚РєР»РѕРЅРµРЅРёРµ СЃСѓРјРјС‹ 1,234</td><td>Пройден</td></tr><tr><td>РћС‚РєР»РѕРЅРµРЅРёРµ СЃСѓРјРјС‹ 100000001</td><td>Пройден</td></tr><tr><td>РћС‚РєР»РѕРЅРµРЅРёРµ РїСѓСЃС‚РѕРіРѕ РЅР°Р·РІР°РЅРёСЏ</td><td>Пройден</td></tr><tr><td>РќР°Р·РІР°РЅРёРµ РІС‹РІРѕРґРёС‚СЃСЏ Р±РµР·РѕРїР°СЃРЅРѕ</td><td>Пройден</td></tr><tr><td>РњРѕР±РёР»СЊРЅР°СЏ С€РёСЂРёРЅР° Р±РµР· РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ РїСЂРѕРєСЂСѓС‚РєРё</td><td>Пройден</td></tr><tr><td>РќРµС‚ РѕС€РёР±РѕРє JavaScript</td><td>Пройден</td></tr></table>
+<h2>8. Исходный код</h2><h3>index.html</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+  &lt;title&gt;Расходы — лабораторная №5&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;script src=&quot;script.js&quot; defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main&gt;
+    &lt;header&gt;&lt;span class=&quot;badge&quot;&gt;ЛАБОРАТОРНАЯ №5 · ВАРИАНТ 20&lt;/span&gt;&lt;span&gt;Алматы · KZT&lt;/span&gt;&lt;/header&gt;
+    &lt;section class=&quot;intro&quot;&gt;&lt;p class=&quot;eyebrow&quot;&gt;ЛИЧНЫЙ БЮДЖЕТ&lt;/p&gt;&lt;h1&gt;Расходы под контролем.&lt;/h1&gt;&lt;p&gt;Записывайте повседневные покупки и следите за общей суммой.&lt;/p&gt;&lt;/section&gt;
+    &lt;section class=&quot;summary&quot; aria-label=&quot;Статистика&quot;&gt;&lt;div&gt;&lt;p&gt;Всего потрачено&lt;/p&gt;&lt;strong id=&quot;total&quot; aria-live=&quot;polite&quot;&gt;0 ₸&lt;/strong&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;Записей&lt;/p&gt;&lt;strong id=&quot;count&quot;&gt;0&lt;/strong&gt;&lt;/div&gt;&lt;/section&gt;
+    &lt;div class=&quot;layout&quot;&gt;
+      &lt;section class=&quot;panel&quot;&gt;&lt;h2&gt;Новый расход&lt;/h2&gt;&lt;p class=&quot;muted&quot;&gt;Все суммы указываются в тенге.&lt;/p&gt;
+        &lt;form id=&quot;expense-form&quot; novalidate&gt;
+          &lt;label for=&quot;name&quot;&gt;Название&lt;/label&gt;&lt;input id=&quot;name&quot; maxlength=&quot;80&quot; placeholder=&quot;Например, продукты&quot; required autocomplete=&quot;off&quot; aria-describedby=&quot;error&quot;&gt;
+          &lt;label for=&quot;amount&quot;&gt;Сумма, ₸&lt;/label&gt;&lt;input id=&quot;amount&quot; type=&quot;text&quot; inputmode=&quot;decimal&quot; placeholder=&quot;0&quot; required autocomplete=&quot;off&quot; aria-describedby=&quot;error&quot;&gt;
+          &lt;p id=&quot;error&quot; class=&quot;error&quot; role=&quot;alert&quot;&gt;&lt;/p&gt;&lt;button class=&quot;primary&quot; type=&quot;submit&quot;&gt;+ Добавить расход&lt;/button&gt;
+        &lt;/form&gt;&lt;p id=&quot;storage-note&quot; class=&quot;note&quot;&gt;Записи сохраняются в этом браузере автоматически.&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section class=&quot;panel&quot;&gt;&lt;div class=&quot;list-heading&quot;&gt;&lt;h2&gt;История расходов&lt;/h2&gt;&lt;span class=&quot;pill&quot;&gt;В тенге&lt;/span&gt;&lt;/div&gt;&lt;div id=&quot;empty&quot; class=&quot;empty&quot;&gt;&lt;span&gt;₸&lt;/span&gt;&lt;h3&gt;Начните с первой записи&lt;/h3&gt;&lt;p&gt;Добавьте расход — он появится здесь.&lt;/p&gt;&lt;/div&gt;&lt;ol id=&quot;expense-list&quot;&gt;&lt;/ol&gt;&lt;p id=&quot;status&quot; class=&quot;sr-only&quot; role=&quot;status&quot;&gt;&lt;/p&gt;&lt;/section&gt;
+    &lt;/div&gt;&lt;footer&gt;JavaScript · DOM · События · localStorage&lt;/footer&gt;
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3>script.js</h3><pre><code>&quot;use strict&quot;;
+
+const STORAGE_KEY = &quot;lab5-almaty-expenses-v1&quot;;
+const form = document.querySelector(&quot;#expense-form&quot;);
+const nameInput = document.querySelector(&quot;#name&quot;);
+const amountInput = document.querySelector(&quot;#amount&quot;);
+const list = document.querySelector(&quot;#expense-list&quot;);
+const error = document.querySelector(&quot;#error&quot;);
+const currency = new Intl.NumberFormat(&quot;ru-KZ&quot;, { style: &quot;currency&quot;, currency: &quot;KZT&quot;, maximumFractionDigits: 2 });
+let expenses = [];
+
+// Деньги хранятся в тиынах (целые числа), чтобы не накапливать ошибки округления.
+function parseAmount(value) {
+  const normalized = value.trim().replace(&quot;,&quot;, &quot;.&quot;);
+  if (!/^\d+(?:\.\d{1,2})?$/.test(normalized)) return null;
+  const [whole, fraction = &quot;&quot;] = normalized.split(&quot;.&quot;);
+  const amount = Number(whole) * 100 + Number(fraction.padEnd(2, &quot;0&quot;));
+  if (!Number.isSafeInteger(amount) || amount &lt;= 0 || amount &gt; 10000000000) return null;
+  return amount;
+}
+
+function saveExpenses() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(expenses));
+  } catch {
+    document.querySelector(&quot;#storage-note&quot;).textContent = &quot;Сохранение недоступно. Записи сохранятся только до закрытия страницы.&quot;;
+  }
+}
+
+function loadExpenses() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || &quot;[]&quot;);
+    if (Array.isArray(saved)) {
+      expenses = saved.filter(item =&gt; item &amp;&amp; typeof item.name === &quot;string&quot; &amp;&amp; item.name.trim().length &gt; 0 &amp;&amp; item.name.length &lt;= 80 &amp;&amp; Number.isSafeInteger(item.amount) &amp;&amp; item.amount &gt; 0 &amp;&amp; item.amount &lt;= 10000000000);
+      if (!Number.isSafeInteger(expenses.reduce((sum, item) =&gt; sum + item.amount, 0))) expenses = [];
+    }
+  } catch {
+    document.querySelector(&quot;#storage-note&quot;).textContent = &quot;Сохранённые записи недоступны. Можно добавлять новые расходы.&quot;;
+  }
+}
+
+function renderExpenses() {
+  list.replaceChildren();
+  let total = 0;
+  // Цикл создаёт элементы DOM и одновременно вычисляет общую сумму.
+  for (let i = 0; i &lt; expenses.length; i++) {
+    const expense = expenses[i];
+    total += expense.amount;
+    const row = document.createElement(&quot;li&quot;);
+    row.classList.add(&quot;expense-row&quot;);
+    const number = document.createElement(&quot;span&quot;);
+    number.className = &quot;number&quot;;
+    number.textContent = `${i + 1}.`;
+    const name = document.createElement(&quot;span&quot;);
+    name.className = &quot;expense-name&quot;;
+    name.textContent = expense.name;
+    const amount = document.createElement(&quot;span&quot;);
+    amount.className = &quot;expense-amount&quot;;
+    amount.textContent = currency.format(expense.amount / 100);
+    const button = document.createElement(&quot;button&quot;);
+    button.type = &quot;button&quot;;
+    button.className = &quot;delete&quot;;
+    button.dataset.index = String(i);
+    button.textContent = &quot;Удалить&quot;;
+    button.setAttribute(&quot;aria-label&quot;, `Удалить расход: ${expense.name}`);
+    row.append(number, name, amount, button);
+    list.append(row);
+  }
+  document.querySelector(&quot;#total&quot;).textContent = currency.format(total / 100);
+  document.querySelector(&quot;#count&quot;).textContent = String(expenses.length);
+  document.querySelector(&quot;#empty&quot;).hidden = expenses.length &gt; 0;
+}
+
+form.addEventListener(&quot;submit&quot;, event =&gt; {
+  event.preventDefault();
+  const name = nameInput.value.trim();
+  const amount = parseAmount(amountInput.value);
+  nameInput.setAttribute(&quot;aria-invalid&quot;, String(!name || name.length &gt; 80));
+  amountInput.setAttribute(&quot;aria-invalid&quot;, String(amount === null));
+  if (!name || name.length &gt; 80) {
+    error.textContent = &quot;Введите название расхода (до 80 символов).&quot;;
+    nameInput.focus();
+  } else if (amount === null) {
+    error.textContent = &quot;Введите сумму от 0,01 до 100 000 000 ₸, не более двух знаков после запятой.&quot;;
+    amountInput.focus();
+  } else if (!Number.isSafeInteger(expenses.reduce((sum, item) =&gt; sum + item.amount, 0) + amount)) {
+    error.textContent = &quot;Общая сумма слишком велика. Удалите часть записей.&quot;;
+  } else {
+    expenses.push({ name, amount });
+    saveExpenses();
+    renderExpenses();
+    form.reset();
+    error.textContent = &quot;&quot;;
+    document.querySelector(&quot;#status&quot;).textContent = `Добавлен расход: ${name}.`;
+    nameInput.focus();
+  }
+});
+
+list.addEventListener(&quot;click&quot;, event =&gt; {
+  const button = event.target.closest(&quot;button[data-index]&quot;);
+  if (!button) return;
+  const index = Number(button.dataset.index);
+  const removed = expenses.splice(index, 1)[0];
+  saveExpenses();
+  renderExpenses();
+  document.querySelector(&quot;#status&quot;).textContent = `Удалён расход: ${removed.name}.`;
+  const nextButton = list.querySelectorAll(&quot;button&quot;)[Math.min(index, expenses.length - 1)];
+  if (nextButton) nextButton.focus();
+  else nameInput.focus();
+});
+
+form.addEventListener(&quot;input&quot;, event =&gt; {
+  error.textContent = &quot;&quot;;
+  event.target.removeAttribute(&quot;aria-invalid&quot;);
+});
+
+loadExpenses();
+renderExpenses();
+</code></pre><h3>style.css</h3><pre><code>:root{font-family:Segoe UI,Arial,sans-serif;color:#172d2a;background:#f3f5ef;font-synthesis:none}*{box-sizing:border-box}body{margin:0}main{max-width:1080px;margin:0 auto;padding:38px 28px}header{display:flex;justify-content:space-between;gap:16px;align-items:center;font-size:13px;color:#53685f}.badge{font-size:11px;font-weight:700;letter-spacing:1.2px;border:1px solid #cbd5c7;border-radius:20px;padding:9px 13px}.intro{margin:52px 0 30px}.eyebrow{font-size:11px;letter-spacing:2px;font-weight:700;color:#47704e}h1{font-size:42px;letter-spacing:-1.6px;margin:12px 0 14px;line-height:1.15}.intro&gt;p:last-child{color:#66736a;font-size:16px}.summary{display:flex;justify-content:space-between;align-items:center;background:#183e35;color:#fff;border-radius:20px;padding:26px 34px;margin-bottom:26px}.summary p{margin:0 0 10px;color:#c1d4c4;font-size:14px}.summary strong{font-size:37px;font-weight:600;overflow-wrap:anywhere}.summary&gt;div:last-child{min-width:90px;border-left:1px solid #456357;padding-left:28px}.layout{display:grid;grid-template-columns:340px 1fr;gap:24px}.panel{background:#fff;border:1px solid #e2e7dc;border-radius:18px;padding:26px}h2{font-size:20px;margin:0 0 12px}p.muted,.note{font-size:13px;color:#768076;line-height:1.6}.note{margin-top:22px}.error{font-size:13px;color:#ab3131;min-height:20px;margin:12px 0}label{display:block;font-size:13px;font-weight:600;margin:20px 0 8px}input{width:100%;border:1px solid #cbd5c7;border-radius:9px;padding:13px;font:inherit;background:#fbfcf9}input:focus{outline:2px solid #5d956e;outline-offset:2px}input[aria-invalid=true]{border-color:#ab3131}button{font:inherit;cursor:pointer;border:0;border-radius:9px}.primary{width:100%;padding:14px;color:white;background:#275c45;font-size:14px;font-weight:600}.primary:hover{background:#1a4633}.list-heading{display:flex;justify-content:space-between;align-items:center}.pill{font-size:11px;color:#49624c;background:#eef3e8;padding:6px 10px;border-radius:15px}.empty{text-align:center;padding:48px 0;color:#7a8679}.empty&gt;span{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#f1f5eb;font-size:26px}.empty h3{font-size:16px;color:#53654f;font-weight:600}.empty p{font-size:13px}ol{list-style:none;padding:0;margin:10px 0 0}.expense-row{display:flex;align-items:center;gap:12px;border-bottom:1px solid #edf0e8;padding:17px 0}.number{color:#879381;font-size:12px;min-width:19px}.expense-name{flex:1;overflow-wrap:anywhere;font-size:14px}.expense-amount{white-space:nowrap;font-size:14px;font-weight:600}.delete{background:#f8ede9;color:#994936;font-size:12px;padding:8px}.delete:hover{background:#f0d6ce}footer{font-size:11px;color:#82907d;margin:28px 0}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}[hidden]{display:none!important}@media(max-width:720px){main{padding:22px 16px}header{align-items:flex-start;font-size:11px}.badge{font-size:9px}h1{font-size:32px}.intro{margin-top:35px}.layout{grid-template-columns:1fr}.summary{padding:22px}.summary strong{font-size:29px}.panel{padding:21px}.expense-row{flex-wrap:wrap}.expense-name{min-width:100px}.delete{margin-left:auto}}
+</code></pre>
+<h2>9. Вывод</h2><p>Создано приложение для учёта расходов в тенге. Освоены обработка событий, проверка пользовательского ввода, работа с массивами, создание и удаление DOM-элементов. Реализованы подсчёт общей суммы и сохранение данных между сеансами.</p>
+<h2>10. Краткие ответы для защиты</h2><ul><li>JavaScript обеспечивает поведение и интерактивность страницы.</li><li>let позволяет переназначить переменную; const запрещает переназначение, но не изменение содержимого массива или объекта.</li><li>if/else выбирает ветвь выполнения по условию.</li><li>Циклы: for, while, do…while, for…of, for…in.</li><li>Функция — именованный или анонимный блок действий; параметр принимает входное значение.</li><li>DOM — представление документа как дерева объектов.</li><li>Элемент получают через getElementById или querySelector.</li><li>textContent — текст узла; value — текущее значение поля ввода.</li><li>Событие — сигнал о действии пользователя или браузера; addEventListener подключает обработчик.</li><li>Классы меняют через classList.add, remove и toggle.</li><li>Элементы создают через createElement и вставляют через append.</li><li>Массив перебирают циклом for или for…of.</li><li>Проверка ввода предотвращает неверные расчёты и некорректное состояние программы.</li><li>Разделение HTML и JavaScript упрощает чтение, поддержку и повторное использование кода.</li></ul></body></html>
