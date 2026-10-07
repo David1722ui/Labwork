@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Таблица студентов | Вариант 8</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="card">
+    <p class="label">Лабораторная №6 · Средний уровень · Вариант 8</p>
+    <h1>Таблица студентов</h1>
+    <p class="hint">Добавляй студентов и их баллы от 0 до 100.</p>
+
+    <form id="studentForm" novalidate>
+      <div class="field">
+        <label for="nameInput">Имя студента</label>
+        <input id="nameInput" name="studentName" type="text"
+          maxlength="60" required placeholder="Например, Давид"
+          aria-describedby="message" autocomplete="off">
+      </div>
+      <div class="field score-field">
+        <label for="scoreInput">Балл</label>
+        <input id="scoreInput" name="studentScore" type="number"
+          min="0" max="100" step="1" required placeholder="0–100"
+          aria-describedby="message">
+      </div>
+      <button type="submit">Добавить</button>
+    </form>
+
+    <p id="message" class="message" role="status"></p>
+    <div class="summary" aria-live="polite">
+      <span>Студентов: <strong id="studentCount">0</strong></span>
+      <span>Средний балл: <strong id="averageScore">—</strong></span>
+    </div>
+    <p id="emptyState" class="hint">Таблица пуста. Добавь первого студента.</p>
+    <div class="table-wrap">
+      <table>
+        <caption class="visually-hidden">Имена и баллы студентов</caption>
+        <thead>
+          <tr><th scope="col">Имя</th><th scope="col">Балл</th>
+            <th scope="col">Действие</th></tr>
+        </thead>
+        <tbody id="studentRows"></tbody>
+      </table>
+    </div>
+    <p class="hint footer">Enter в поле формы — добавить студента.
+      Кнопки доступны через Tab и активируются Enter или пробелом.</p>
+  </main>
+</body>
+</html>

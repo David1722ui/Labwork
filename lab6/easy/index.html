@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список покупок | Лабораторная работа №6</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="card">
+    <p class="label">Лабораторная №6 • Базовый уровень • Вариант 1</p>
+    <h1>Список покупок</h1>
+    <p class="hint">Добавь покупку и нажми на неё, когда она куплена.</p>
+    <label for="productInput">Название покупки</label>
+    <div class="entry">
+      <input id="productInput" type="text" maxlength="80"
+        placeholder="Например, молоко" autocomplete="off"
+        aria-describedby="message">
+      <button id="addBtn" type="button">Добавить</button>
+    </div>
+    <p id="message" class="message" role="status"></p>
+    <p id="counter" class="counter" aria-live="polite">
+      Всего: 0 · Куплено: 0 · Осталось: 0
+    </p>
+    <p id="emptyState" class="empty">Список пуст. Добавь первую покупку.</p>
+    <ul id="shoppingList" aria-label="Покупки"></ul>
+    <p class="hint footer">Enter в поле — добавить. Enter или пробел
+      на покупке — изменить её отметку.</p>
+  </main>
+</body>
+</html>

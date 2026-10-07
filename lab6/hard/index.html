@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban-доска | Вариант 16</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="panel">
+    <p class="label">Лабораторная №6 · Повышенный уровень · Вариант 16</p>
+    <h1>Kanban-доска</h1>
+    <p class="hint">Добавь задачу и перемещай её между этапами кнопками.</p>
+
+    <form id="taskForm" novalidate>
+      <div class="field">
+        <label for="taskInput">Название задачи</label>
+        <input id="taskInput" name="taskTitle" type="text" maxlength="100"
+          required placeholder="Например, изучить события JavaScript"
+          autocomplete="off" aria-describedby="message">
+      </div>
+      <button type="submit">Добавить карточку</button>
+    </form>
+    <p id="message" class="message" role="status"></p>
+
+    <div class="search-row">
+      <div class="field">
+        <label for="searchInput">Поиск по названию</label>
+        <input id="searchInput" type="search" maxlength="100"
+          placeholder="Найти карточку…" autocomplete="off">
+      </div>
+      <p id="summary" class="summary" aria-live="polite">Всего: 0 · Показано: 0</p>
+    </div>
+
+    <div id="board" class="board">
+      <section class="column new" aria-labelledby="newHeading">
+        <h2 id="newHeading">Новые <span id="newCount" class="count">0</span></h2>
+        <p id="newEmpty" class="empty">Пока нет карточек.</p>
+        <ul id="newList" class="task-list" aria-label="Новые задачи"></ul>
+      </section>
+      <section class="column working" aria-labelledby="workingHeading">
+        <h2 id="workingHeading">В работе <span id="workingCount" class="count">0</span></h2>
+        <p id="workingEmpty" class="empty">Пока нет карточек.</p>
+        <ul id="workingList" class="task-list" aria-label="Задачи в работе"></ul>
+      </section>
+      <section class="column done" aria-labelledby="doneHeading">
+        <h2 id="doneHeading">Готово <span id="doneCount" class="count">0</span></h2>
+        <p id="doneEmpty" class="empty">Пока нет карточек.</p>
+        <ul id="doneList" class="task-list" aria-label="Готовые задачи"></ul>
+      </section>
+    </div>
+    <p class="hint footer">Enter в поле задачи — добавить карточку.
+      Tab — перейти к кнопкам, Enter или пробел — нажать.
+      Очисти поиск, чтобы увидеть все карточки.</p>
+  </main>
+</body>
+</html>

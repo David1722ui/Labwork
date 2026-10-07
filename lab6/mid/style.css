@@ -1,0 +1,57 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 40px 16px;
+  background: #eef3f7; color: #203047;
+  font-family: Arial, sans-serif;
+}
+.card {
+  max-width: 760px; margin: 0 auto; padding: 30px;
+  background: white; border: 1px solid #dce5ee; border-radius: 16px;
+}
+.label { font-size: 12px; color: #61738b; }
+h1 { margin: 14px 0; font-size: 30px; }
+.hint { color: #61738b; line-height: 1.5; }
+form { display: flex; gap: 12px; align-items: flex-end; }
+.field { flex: 1; min-width: 0; }
+.score-field { flex: 0 0 125px; }
+label { display: block; margin-bottom: 8px; font-weight: bold; }
+input {
+  width: 100%; padding: 12px; font-size: 16px;
+  border: 1px solid #a6b7c9; border-radius: 8px;
+}
+input[aria-invalid="true"] { border-color: #b3261e; }
+button {
+  padding: 12px 18px; border: 0; border-radius: 8px;
+  background: #245bc3; color: white; font-size: 16px; cursor: pointer;
+}
+button:hover { background: #18499f; }
+button:focus-visible, input:focus-visible {
+  outline: 3px solid #8eb4ff; outline-offset: 2px;
+}
+.message { min-height: 22px; margin: 12px 0; color: #27623a; }
+.message.error { color: #b3261e; }
+.summary {
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  padding: 14px; background: #edf3ff; border-radius: 8px;
+}
+.table-wrap { overflow-x: auto; margin-top: 16px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #dce5ee; }
+th { background: #f5f7fa; }
+td:first-child { overflow-wrap: anywhere; max-width: 300px; }
+.delete-btn { padding: 8px 12px; background: #a52b25; font-size: 14px; }
+.delete-btn:hover { background: #82201c; }
+.footer { font-size: 13px; margin-bottom: 0; }
+[hidden] { display: none; }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+@media (max-width: 560px) {
+  body { padding: 16px 12px; }
+  .card { padding: 20px; }
+  form { flex-direction: column; align-items: stretch; }
+  .score-field { flex: auto; }
+  th, td { padding: 10px 8px; }
+  h1 { font-size: 26px; }
+}
