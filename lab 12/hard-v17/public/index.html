@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Портал с JWT — ЛР №12</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <p id="loading" class="loading">Загрузка…</p>
+
+    <!-- Вход -->
+    <section id="login-view" class="card login-card" hidden>
+      <h1>Учебный портал</h1>
+      <p class="subtitle">Вход с JWT и обновлением сессии</p>
+      <form id="login-form" novalidate>
+        <label for="login">Логин</label>
+        <input id="login" autocomplete="username">
+        <label for="password">Пароль</label>
+        <input id="password" type="password" autocomplete="current-password">
+        <button type="submit">Войти</button>
+      </form>
+      <p id="login-message" class="message" role="alert"></p>
+    </section>
+
+    <!-- Защищённая часть -->
+    <section id="app-view" hidden>
+      <header class="topbar">
+        <div>
+          <h1>Учебный портал</h1>
+          <p class="subtitle"><strong id="user-name"></strong> · <span id="user-role" class="badge"></span></p>
+        </div>
+        <div class="topbar-right">
+          <span id="access-timer" class="timer" title="Сколько живёт текущий access-токен"></span>
+          <span id="session-timer" class="timer" title="Сколько осталось до конца сессии"></span>
+          <button id="logout-btn" class="secondary" type="button">Выйти</button>
+        </div>
+      </header>
+
+      <p id="app-message" class="message" role="status"></p>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Мой профиль</h2>
+          <dl id="profile" class="profile"></dl>
+          <button id="profile-btn" class="secondary small" type="button">Запросить профиль с сервера</button>
+        </div>
+
+        <div class="card">
+          <h2>Чужой профиль</h2>
+          <p class="hint">Пользователь видит только свой профиль, администратор — любой.</p>
+          <form id="user-form" class="row" novalidate>
+            <input id="user-id" type="number" min="1" placeholder="Номер пользователя">
+            <button type="submit">Открыть</button>
+          </form>
+          <p id="user-result" class="message"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Журнал входов и выходов <span class="hint-inline">(только admin)</span></h2>
+        <button id="audit-btn" class="secondary small" type="button">Загрузить журнал</button>
+        <p id="audit-message" class="message"></p>
+        <table id="audit-table" hidden>
+          <thead><tr><th>Время</th><th>Событие</th><th>Логин</th><th>Подробности</th></tr></thead>
+          <tbody id="audit-rows"></tbody>
+        </table>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Содержимое access-токена</h2>
+          <p class="hint">JWT не шифруется: payload может прочитать любой. Подделать его без секрета сервера нельзя.</p>
+          <pre id="token-payload"></pre>
+        </div>
+        <div class="card">
+          <h2>Что происходит с токенами</h2>
+          <ul id="token-log" class="log"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

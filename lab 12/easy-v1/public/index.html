@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Личный кабинет студента — ЛР №12</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <p id="loading" class="loading">Загрузка…</p>
+
+    <!-- Форма входа -->
+    <section id="login-view" class="card login-card" hidden>
+      <h1>Личный кабинет студента</h1>
+      <p class="subtitle">Войдите под своей учётной записью</p>
+      <form id="login-form" novalidate>
+        <label for="login">Логин</label>
+        <input id="login" autocomplete="username">
+        <label for="password">Пароль</label>
+        <input id="password" type="password" autocomplete="current-password">
+        <button type="submit">Войти</button>
+      </form>
+      <p id="login-message" class="message" role="alert"></p>
+    </section>
+
+    <!-- Кабинет (данные приходят с сервера только после входа) -->
+    <section id="cabinet-view" class="card" hidden>
+      <div class="topbar">
+        <div>
+          <h1 id="student-name"></h1>
+          <p class="subtitle">Группа: <strong id="student-group"></strong> · логин: <span id="student-login"></span></p>
+        </div>
+        <button id="logout-btn" class="secondary" type="button">Выйти</button>
+      </div>
+
+      <!-- Подтверждение выхода (творческое задание) -->
+      <div id="logout-confirm" class="confirm" hidden>
+        <span>Выйти из личного кабинета?</span>
+        <button id="logout-yes" type="button">Да, выйти</button>
+        <button id="logout-no" class="secondary" type="button">Отмена</button>
+      </div>
+
+      <p id="cabinet-message" class="message" role="status"></p>
+
+      <h2>Мои оценки</h2>
+      <table>
+        <thead><tr><th>Предмет</th><th>Оценка</th></tr></thead>
+        <tbody id="grades"></tbody>
+      </table>
+      <button id="refresh-btn" class="secondary small" type="button">Обновить данные</button>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f2f4f7;
+  color: #1f2933;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.loading {
+  text-align: center;
+  color: #616e7c;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 22px 26px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.login-card {
+  max-width: 380px;
+  margin: 60px auto;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+}
+
+h2 {
+  margin: 20px 0 10px;
+  font-size: 17px;
+}
+
+.subtitle {
+  margin: 0 0 12px;
+  color: #616e7c;
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  margin: 12px 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid #cbd2d9;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+button {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #0f766e;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #115e59;
+}
+
+button.secondary {
+  background: #e4e7eb;
+  color: #1f2933;
+}
+
+button.secondary:hover {
+  background: #cbd2d9;
+}
+
+button.small {
+  margin-top: 14px;
+  padding: 7px 14px;
+  font-size: 14px;
+}
+
+#login-form button {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.confirm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 8px 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fff7e0;
+  font-size: 15px;
+}
+
+.confirm span {
+  flex: 1;
+}
+
+.message {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.message:empty {
+  display: none;
+}
+
+.message.error {
+  background: #fde8e8;
+  color: #9b1c1c;
+}
+
+.message.success {
+  background: #e3f9e5;
+  color: #1e6b34;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+th,
+td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #eef0f3;
+  text-align: left;
+}
+
+th {
+  color: #616e7c;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+td:last-child,
+th:last-child {
+  text-align: center;
+  width: 90px;
+}

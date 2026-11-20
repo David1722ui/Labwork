@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "login": "student1",
+    "name": "Алексей Тестов",
+    "group": "ТЕСТ-01",
+    "grades": [
+      {
+        "subject": "Языки и технология программирования",
+        "grade": 5
+      },
+      {
+        "subject": "Базы данных",
+        "grade": 4
+      },
+      {
+        "subject": "Компьютерные сети",
+        "grade": 5
+      },
+      {
+        "subject": "Английский язык",
+        "grade": 4
+      }
+    ],
+    "salt": "bdedeaee5fe223cbcd59f4100012905d",
+    "hash": "bad5c489c91c5a46eb8ebbb910c3289da1f2962ce24a4ae88208ba0a2fc8c30f0bc6b4d388e940260c65516af7244e1794dbfecaeb3ed13d023b584a5eb34799"
+  },
+  {
+    "id": 2,
+    "login": "student2",
+    "name": "Дана Тестова",
+    "group": "ТЕСТ-02",
+    "grades": [
+      {
+        "subject": "Языки и технология программирования",
+        "grade": 4
+      },
+      {
+        "subject": "Базы данных",
+        "grade": 5
+      },
+      {
+        "subject": "Компьютерные сети",
+        "grade": 4
+      }
+    ],
+    "salt": "7937a079502052cf1a78dbb670bb02f1",
+    "hash": "e9a4f9ab0b007c077a4b2d83cfac688018da79143bca714b1c15489b0429a005b8d4e20730926458b5f9814c7c17fc7c826939f6402cf50e06cef6519b23ee99"
+  }
+]
