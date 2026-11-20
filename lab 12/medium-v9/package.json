@@ -1,0 +1,19 @@
+{
+  "name": "lab12-medium-v9",
+  "version": "1.0.0",
+  "description": "ЛР №12, вариант 9: сервис задач — вход, список личных задач, запрет просмотра чужих задач",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "start:short": "node server.js 30",
+    "test": "node --test",
+    "hash": "node tools/hash-password.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

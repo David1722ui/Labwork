@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "ownerId": 1,
+    "title": "Подготовить отчёт по ЛР №12",
+    "done": false
+  },
+  {
+    "id": 2,
+    "ownerId": 1,
+    "title": "Повторить контрольные вопросы",
+    "done": false
+  },
+  {
+    "id": 3,
+    "ownerId": 1,
+    "title": "Сделать скриншоты работы",
+    "done": true
+  },
+  {
+    "id": 4,
+    "ownerId": 2,
+    "title": "Сдать курсовую работу",
+    "done": false
+  },
+  {
+    "id": 5,
+    "ownerId": 2,
+    "title": "Купить тетрадь",
+    "done": true
+  }
+]

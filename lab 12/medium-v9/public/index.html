@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мои задачи — ЛР №12</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <p id="loading" class="loading">Загрузка…</p>
+
+    <!-- Экран входа -->
+    <section id="login-view" class="card login-card" hidden>
+      <h1>Сервис задач</h1>
+      <p class="subtitle">Войдите, чтобы увидеть свои задачи</p>
+      <form id="login-form" novalidate>
+        <label for="login">Логин</label>
+        <input id="login" name="login" autocomplete="username">
+        <label for="password">Пароль</label>
+        <input id="password" name="password" type="password" autocomplete="current-password">
+        <button type="submit">Войти</button>
+      </form>
+      <p id="login-message" class="message" role="alert"></p>
+    </section>
+
+    <!-- Защищённый раздел (данные приходят только после проверки сессии сервером) -->
+    <section id="app-view" hidden>
+      <header class="topbar">
+        <div>
+          <h1>Мои задачи</h1>
+          <p class="subtitle">Пользователь: <strong id="user-name"></strong></p>
+        </div>
+        <div class="topbar-right">
+          <span id="session-timer" class="timer" title="Время до окончания сессии"></span>
+          <button id="logout-btn" class="secondary" type="button">Выйти</button>
+        </div>
+      </header>
+
+      <p id="app-message" class="message" role="status"></p>
+
+      <div class="card">
+        <h2>Список задач</h2>
+        <ul id="task-list" class="task-list"></ul>
+        <form id="add-task-form" class="row" novalidate>
+          <input id="task-title" placeholder="Новая задача" maxlength="200">
+          <button type="submit">Добавить</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Открыть задачу по номеру</h2>
+        <p class="hint">Сервер покажет задачу, только если она ваша. Чужая задача — отказ (HTTP 403).</p>
+        <form id="open-task-form" class="row" novalidate>
+          <input id="task-id" type="number" min="1" placeholder="Номер задачи">
+          <button type="submit">Открыть</button>
+        </form>
+        <p id="task-details" class="message"></p>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "login": "student1",
+    "name": "Алексей Тестов",
+    "salt": "e6fda89f91d39424224d7b32e89608a1",
+    "hash": "ab63cff450607def3ae8002b797726d66317b6651b0bd262c12e6bf910bf7a6f28c0a992278e151af634a5e669d80f6510dff86f2bbd4d5cd52b0ae9bc5a8206"
+  },
+  {
+    "id": 2,
+    "login": "student2",
+    "name": "Дана Тестова",
+    "salt": "4fdb446481bad3485b1e8c1646844d95",
+    "hash": "b4c199e1be5d5a597e93337962e9c317c8960ddfef6378566cf061de36afc21a5ea5487572cf1e36d0344fd3446a8a2d864125ac67bdf9940f952f848804d846"
+  }
+]
